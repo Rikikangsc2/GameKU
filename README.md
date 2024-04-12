@@ -1,4 +1,4 @@
-```markdown
+
 # Dokumentasi Penggunaan Modul GameKU
 
 Halo, selamat datang di dokumentasi penggunaan modul GameKU. Modul ini adalah sebuah permainan teka-teki kata yang seru dan menantang. Berikut adalah panduan lengkap untuk menggunakan modul ini.
@@ -64,4 +64,3 @@ gameku.nyerah('Riki');
 ## Kesimpulan
 
 Itulah cara menggunakan modul GameKU. Dengan modul ini, Anda dapat bermain teka-teki kata kapan saja dan di mana saja. Selamat bermain dan semoga berhasil mendapatkan skor tertinggi!
-```
