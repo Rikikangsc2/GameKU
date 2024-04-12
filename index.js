@@ -1,15 +1,13 @@
 const fs = require('fs');
 const axios = require('axios');
 
-// Membuat file jika belum ada
 const initializeFiles = () => {
   if (!fs.existsSync('soal.json')) fs.writeFileSync('soal.json', '{}');
   if (!fs.existsSync('nyerah.json')) fs.writeFileSync('nyerah.json', '{}');
   if (!fs.existsSync('point.json')) fs.writeFileSync('point.json', '{}');
 };
 
-// Fungsi untuk mendapatkan soal
-const getSoal = async (username) => {
+const susunKata = async (username) => {
   const nyerahData = JSON.parse(fs.readFileSync('nyerah.json'));
   const soalData = JSON.parse(fs.readFileSync('soal.json'));
 
@@ -30,7 +28,6 @@ const getSoal = async (username) => {
   }
 };
 
-// Fungsi untuk menjawab soal
 const jawabSoal = (username, jawaban) => {
   const soalData = JSON.parse(fs.readFileSync('soal.json'));
   const pointData = JSON.parse(fs.readFileSync('point.json'));
@@ -55,20 +52,17 @@ const jawabSoal = (username, jawaban) => {
   }
 };
 
-// Fungsi untuk melihat skor
 const skor = (username) => {
   const pointData = JSON.parse(fs.readFileSync('point.json'));
   return `point ${username} adalah ${pointData[username] || 0}`;
 };
 
-// Fungsi untuk melihat top skor
 const topskor = () => {
   const pointData = JSON.parse(fs.readFileSync('point.json'));
   const sortedUsers = Object.keys(pointData).sort((a, b) => pointData[b] - pointData[a]).slice(0, 10);
   return `*Berikut 10 user dengan point tertinggi :*\n${sortedUsers.map((user, index) => `${index + 1}. ${user} - ${pointData[user]}`).join('\n')}`;
 };
 
-// Fungsi untuk menyerah
 const nyerah = (username) => {
   const soalData = JSON.parse(fs.readFileSync('soal.json'));
   if (soalData[username]) {
@@ -80,7 +74,6 @@ const nyerah = (username) => {
   }
 };
 
-// Inisialisasi file
 initializeFiles();
 
-module.exports = { getSoal, jawabSoal, skor, topskor, nyerah };
+module.exports = { susunKata, jawabSoal, skor, topskor, nyerah };
