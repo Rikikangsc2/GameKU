@@ -7,12 +7,9 @@ const gameku = require('GameKU');
 ```
 
 ## Fungsi yang Tersedia
-### 1. `susunKata(username)`
-
-Fungsi ini digunakan untuk mendapatkan soal baru. Anda hanya perlu memberikan username sebagai parameter. Contoh penggunaannya:
-
+### 1. `List Game`
 ```javascript
-gameku.getSoal('Riki');
+gameku.susunKata('Riki');
 ```
 
 ### 2. `jawabSoal(username, jawaban)`
