@@ -1,7 +1,7 @@
 {
-  "name": "GameKu",
-  "version": "1.0.0",
-  "description": "",
+  "name": "GameKU",
+  "version": "1",
+  "description": "module for playing games",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
