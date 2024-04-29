@@ -7,6 +7,27 @@ const initializeFiles = () => {
   if (!fs.existsSync('point.json')) fs.writeFileSync('point.json', '{}');
 };
 
+const caklontong = async (username) => {
+  const nyerahData = JSON.parse(fs.readFileSync('nyerah.json'));
+  const soalData = JSON.parse(fs.readFileSync('soal.json'));
+
+  if (nyerahData[username]) {
+    delete nyerahData[username];
+    fs.writeFileSync('nyerah.json', JSON.stringify(nyerahData));
+  }
+
+  if (!soalData[username]) {
+    const response = await axios.get('https://raw.githubusercontent.com/ramadhankukuh/database/master/src/games/caklontong.json');
+    const soal = response.data[Math.floor(Math.random() * response.data.length)];
+    soalData[username] = soal;
+    fs.writeFileSync('soal.json', JSON.stringify(soalData));
+    return `Jawab soal berikut:\n*soal :* ${soal.soal}`;
+  } else {
+    const soal = soalData[username];
+    return `${username} kamu belum menjawab soal ini :\n*soal :* ${soal.soal}`;
+  }
+};
+
 const susunKata = async (username) => {
   const nyerahData = JSON.parse(fs.readFileSync('nyerah.json'));
   const soalData = JSON.parse(fs.readFileSync('soal.json'));
@@ -37,12 +58,13 @@ const jawabSoal = (username, jawaban) => {
   }
 
   const soal = soalData[username];
-  if (jawaban.toUpperCase() === soal.jawaban) {
+  if (jawaban.toUpperCase() === soal.jawaban.toUpperCase()) {
     pointData[username] = (pointData[username] || 0) + 3;
+    const deskripsi = soal.deskripsi;
     delete soalData[username];
     fs.writeFileSync('soal.json', JSON.stringify(soalData));
     fs.writeFileSync('point.json', JSON.stringify(pointData));
-    return `*Benar* Kamu mendapatkan 3 point`;
+    return deskripsi ? `*Benar* ${deskripsi}` : `*Benar* Kamu mendapatkan 3 point`;
   } else {
     if (pointData[username] > 0) {
       pointData[username] -= 1;
