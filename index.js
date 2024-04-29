@@ -42,7 +42,7 @@ const susunKata = async (username) => {
     const soal = response.data[Math.floor(Math.random() * response.data.length)];
     soalData[username] = soal;
     fs.writeFileSync('soal.json', JSON.stringify(soalData));
-    return `Jawab soal berikut:\n*soal :* ${soal.soal}\n*tipe :* ${soal.tipe}`;
+    return `Jawab soal berikut:\n*soal :* ${soal.soal}\n*tipe :* ${soal.tipe || 'null'}`;
   } else {
     const soal = soalData[username];
     return `${username} kamu belum menjawab soal ini :\n*soal :* ${soal.soal}\n*tipe :* ${soal.tipe}`;
