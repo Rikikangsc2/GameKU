@@ -98,4 +98,4 @@ const nyerah = (username) => {
 
 initializeFiles();
 
-module.exports = { susunKata, jawabSoal, skor, topskor, nyerah };
+module.exports = { caklontong, susunKata, jawabSoal, skor, topskor, nyerah };
