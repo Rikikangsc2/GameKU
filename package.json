@@ -1,6 +1,6 @@
 {
   "name": "GameKU",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "module for playing games",
   "main": "index.js",
   "scripts": {
